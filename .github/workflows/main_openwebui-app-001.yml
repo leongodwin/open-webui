@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://ghcr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_64eb2002284746eaaa6c423f9fbbd52a }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_6f1b45b6d4fc4c6c82d0a667ec824e22 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_ed3a017ee61347e683340c4fffa7fa1d }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_66d790e91ae644e8849b5d154415f612 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_64eb2002284746eaaa6c423f9fbbd52a }}/open-webui/open-webui:${{ github.sha }}
+        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_ed3a017ee61347e683340c4fffa7fa1d }}/open-webui/open-webui:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'openwebui-app-001'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_3d9c2fe8ee7e42d789d6d311b7e6c970 }}
-        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_64eb2002284746eaaa6c423f9fbbd52a }}/open-webui/open-webui:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_c003d2ef49114c04b0e98b4e491332a5 }}
+        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_ed3a017ee61347e683340c4fffa7fa1d }}/open-webui/open-webui:${{ github.sha }}'
